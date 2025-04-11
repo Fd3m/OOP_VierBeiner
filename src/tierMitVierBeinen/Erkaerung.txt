@@ -1,0 +1,471 @@
+https://www.codeadventurer.de/?p=1375
+
+Objektorientierte Programmierung am Beispiel von JAVA – Wie du dir mit Hilfe von Vererbung eine Menge Programmierarbeit ersparst.
+​
+ Zusammenfassen:
+Vererbung in der objektorientierten Programmierung ermöglicht es, Klassen Eigenschaften und Methoden von einer Oberklasse zu erben.
+Dies spart Programmierarbeit, indem gemeinsamer Code wiederverwendet wird. Das Schlüsselwort “extends” wird verwendet, um die Vererbung
+festzulegen, und “super” wird genutzt, um den Konstruktor der Oberklasse aufzurufen.
+Keylearnings:
+Was ist Vererbung in der objektorientierten Programmierung?
+Wie man die Sichtbarkeit von Klassen-Elementen über die Schlüsselwörter public, protected und private steuert.
+Wie man Klassen mit Hilfe von Paketen organisiert.
+Wie man mit Hilfe des Schlüsselwort super den Konstruktor der Oberklasse verwendet.
+Das Familienoberhaupt! Die Klasse Object.
+Wie man Methoden überschreibt oder überlädt.
+
+
+
+Ich trauere nicht!
+
+Warum auch? Meine Katze hat geerbt aber niemand ist gestorben.
+
+Das ist wirklich cool! In der objektorientierten Programmierung können wir erben ohne Abschied nehmen zu müssen.
+
+Du erinnerst dich? Wir haben bereits hier über Oberklassen gesprochen. Wir hatten beispielsweise festgestellt, dass eine Katze und ein Hund zur Klasse der Tiere gehören.
+
+Deshalb nennen wir Tier Oberklasse von Hund und Katze. Dieses Konzept wollen wir in diesem Artikel tiefergehend betrachten.
+
+Das Konzept der Vererbung am Beispiel von JAVA
+
+Ich kenne deinen Hund! Das ist der mit den vier Beinen. Der immer so laut bellt. Richtig?
+
+Meine Katze, die hat auch vier Beine. Kann aber leider nicht so laut bellen wie dein Hund. Aber ich wette sie kann dafür doppelt so schnell rennen.
+
+Okay, wir wollen jetzt keine Haustier-Ausbildung absolvieren.
+
+Aber wir stellen fest, Hund und Katze haben gemeinsame Eigenschaften, wie vier Beine und die Fähigkeit rennen zu können.
+
+Und wenn wir es genau betrachten, kann sogar jeder Vierbeiner rennen.
+
+Kim, warum muss ich dann die Funktion rennen für jeden Vierbeiner individuell programmieren?
+
+Genau das haben sich die Erfinder der objektorientierten Programmierung auch gefragt und das Konzept der Vererbung erfunden.
+
+Die Vererbung ermöglicht es uns EINE Klasse Vierbeiner zu schreiben, welche die Gemeinsamkeiten aller (wie z.B. rennen) Vierbeiner implementiert und anschließend zwei Klassen Hund und Katze zu erstellen, in denen NUR die spezifischen Merkmale für einen Hund (z.B. bellen) bzw. eine Katze (Maus fressen) codiert sind.
+
+objektorientierte Programmierung Vererbung
+
+Die Klassen Hund und Katze erben die Eigenschaften, die Katze und Hund gemeinsam haben, anschließend von der Oberklasse  Vierbeiner.
+
+Okay, ich schlage vor. Wir schauen uns das ganze mal in der Praxis an und programmieren im ersten Schritt die Klasse Vierbeiner.
+
+1: class Vierbeiner{
+2:  private String vierbeinerName;
+
+3:  public Vierbeiner(String pName){
+4:   vierbeinerName = pName;
+5:  }
+
+6:  public void rennen(){
+7:   System.out.println(vierbeinerName+" rennt los!");
+8:  }
+9:};
+Die Klasse besitzt eine private Objektvariable vierbeinerName, in welcher der Name unseres Vierbeiners gespeichert wird, und nur über den Konstruktor initialisiert werden kann.
+
+Darüber hinaus enthält die Klasse noch die Methode rennen(), die lediglich eine Bildschirmausgabe erzeugt.
+
+Na schön, gehen wir mit unserem Vierbeiner Gassi indem wir eine Instanz von Vierbeiner anlegen und anschließend die Methode rennen() aufrufen.
+
+1: Vierbeiner hund = new Vierbeiner("Bello");
+2: hund.rennen();
+Unsere Vierbeiner-Instanz nennen wir hund.
+
+Über den Konstruktor weisen wir der privaten Objektvariablen vierbeinerName den Wert Bello zu.
+
+Im nächsten Schritt wollen wir unserem Hund das Bellen und unserer Katze das Mäuse jagen beibringen.
+
+Die Vererbung von Eigenschaften an Unterklassen.
+
+Natürlich dürfen wir dem Hund nicht versehentlich das Mäuse jagen beibringen und eine bellende Katze empfinde ich ebenfalls als unnatürlich und ist wahrscheinlich das Opfer einer Genmanipulation.
+
+Deshalb dürfen wir die Klasse Vierbeiner nicht einfach um die Methoden bellen() und maus_jagen()erweitern. Denn dann könnten unsere Katzen bellen und unsere Hunde Mäuse jagen.
+
+Also was können wir tun?
+
+Die Lösung ist eine Klasse Hund und eine Klasse Katze zu entwickeln, die jeweils von der Oberklasse Vierbeiner erben. Hierfür gibt es in JAVA das Schlüsselwort extends.
+
+Beginnen wir mit der Klasse Hund.
+
+1: class Hund extends Vierbeiner{
+
+2:  public void bellen(){
+3:	System.out.println("Wuff!!");
+4:    }
+
+5:};
+Kriegsentscheidend ist gleich die erste Zeile! Hier benutzen wir das Schlüsselwort extends um festzulegen, dass die Klasse Hund von der Klasse Vierbeiner erbt.
+
+Die Auswirkung dieser Vererbung werden wir spüren, sobald wir eine Hunde-Instanz erzeugen.
+
+Der Rest ist sehr unspektakulär. In Zeile zwei definieren wir eine Methode bellen(), welche die Bildschirmausgabe Wuff erzeugt.
+
+Gut, soweit unserer Hund. Jetzt kreieren wir eine Katze.
+
+1: class Katze extends Vierbeiner{
+
+2:	public void maus_jagen(){
+3:		System.out.println("Ich fange die Maus!");
+4:	}
+
+5:};
+Unsere Klasse Katze unterscheidet sich kaum von der Klasse Hund. Auch hier erben wir in Zeile Eins über das Schlüsselwort extends von der Klasse Vierbeiner.
+
+In der zweiten Zeile definieren wir eine Funktion maus_jagen(), welche die Bildschirmausgabe Ich fange die Maus erzeugt!
+
+objektorientierte programmierung vererbung von Methoden
+
+Alles klar! Bringen wir unseren Hund zum bellen und lassen wir unsere Katze zum Mäuseschreck werden.
+
+Wie machen wir das?
+
+Wir müssen mit Hilfe des Schlüsselwortes new Instanzen von den Klassen Hund und Katze erzeugen.
+
+Außerdem wollen wir das Konzept der Vererbung in Aktion sehen, deshalb bringen wir unsere Vierbeiner zusätzlich auch zum rennen.
+
+Und das geht so:
+
+1: Hund bello = new Hund();
+2: Katze wilhelm = new Katze();
+3: bello.rennen();
+4: wilhelm.rennen();
+5: bello.bellen();
+6: wilhelm.maus_jagen();
+In den ersten beiden Zeilen erzeugen wir eine Instanz der Klasse Hund namens bello und eine Instanz der Klasse Katze mit dem Namen wilhelm.
+
+Beide Vierbeiner lassen wir anschließend rennen, in dem wir in Zeile drei und vier die Methode rennen() für jede Instanz aufrufen.
+
+Hmm, du bist verwundert? Mit recht!! Denn sowohl die Klasse Hund als auch die Klasse Katze hat keine Funktion rennen().
+
+Yeah, aber es klappt trotzdem! Das geht auf die Kappe des Schlüsselworts extends.
+
+Dieses sorgt dafür, dass Hund als auch Katze von der Oberklasse Vierbeiner erben. Hierdurch kannst du sowohl für Bello als auch für Wilhelm die Methode rennen() so aufrufen, als wäre sie jeweils direkt in den Klassen Hund und Katze definiert worden.
+
+Das ist ziemlich cool, denn damit haben wir vermieden den gleichen Programmcode zweimal erstellen zu müssen.
+
+In Zeile fünf lassen wir unseren Hund Bello bellen und in Zeile sechs freut sich Wilhelm aufs Mäuse jagen.
+
+Kim, ich erhalte eine Fehlermeldung, dass der Konstruktor in der Klasse Vierbeiner nicht stimmt!
+
+Ach ja, da war noch was. Sobald wir in einer Klasse einen Konstruktor definieren, geht der Compiler auch davon aus, dass wir diesen auch benutzen. Vorallem wird nicht automatisch ein Standardkonstruktor zur Verfügung gestellt!
+
+Unsere Instanzen bello und wilhelm erzeugen wir aber mit den Standardkonstruktoren Hund() bzw. Katze() und diese versuchen ohne unser zu tun den Standardkonstruktor Vierbeiner unserer Oberklasse aufzurufen, den es nicht gibt.
+
+Wir haben nun zwei Möglichkeiten aus der Nummer rauszukommen.
+
+Wir entfernen den Konstruktor Vierbeiner(String pName) aus der Klasse Vierbeiner. Dann gibt es in Vierbeiner nämlich garkeinen Konstruktor mehr, weshalb der Compiler automatisch den Standardkonstruktor erzeugt.
+Wir definieren den Standardkonstruktor in der Klasse Vierbeiner explizit.
+Und für welche Möglichkeit entscheidest du dich?
+
+Beides führt zu einem lauffähigen Programm. Allerdings wird über den Konstruktor Vierbeiner(String pName) der Name unseres Vierbeiners initialisiert, und da wir kein No name Tier halten möchten, fügen wir der Klasse Vierbeiner den Standardkonstruktor hinzu.
+
+public Vierbeiner(){}
+Jetzt können wir die Katze aus dem Sack und den Hund bellen lassen. Schauen wir uns die Programmausgabe an:
+
+null rennt los!
+null rennt los!
+Wuff!!
+Ich fange die Maus!
+Das ist nicht so schön. 🙁 Sowohl Bello als auch Wilhelm heißen auf einmal null.
+
+Kim, aber das doch klar!! Wir haben schließlich die Variable vierbeinerName nicht initialisert.
+
+So ist es! Wäre ich ein Lehrer ich würde dir eine 1+ geben!
+
+Aufruf des Konstruktors der Oberklasse mittels super().
+
+Gut, du hast bereits erkannt, dass die Variable vierbeinerName den Wert null hat, da wir den Konstruktor Vierbeiner(String pName) nicht aufgerufen haben.
+
+Unsere Instanzen erzeugen wir aus den Unterklassen Hund und Katze. Wir benötigen also eine Möglichkeit den Konstruktor der Oberklasse aus den Unterklassen heraus aufzurufen.
+
+Und genau hierfür gibt es das Schlüsselwort super! Aber genug gequasselt ich zeig dir einfach wie das Ding funktioniert.
+
+Wir erweitern die Klassen Hund und Katze um einen Konstruktor, der als Argument einen String erwartet und mit Hilfe von super an den Konstruktur Vierbeiner(String pName) der Oberklasse übergibt.
+
+In JAVA Code sieht das ganze so aus:
+
+Zunächst für die Klasse Hund:
+
+1: public Hund(String pHundName){
+2:    super(pHundName);
+3: }
+Das ist ein normaler Konstruktor, wie wir ihn bereits hier kennengerlernt haben, dem wir den Namen des Hundes als String-Argument übergeben.
+
+Im Rumpf des Konstruktors schleusen wir den Namen des Hundes mittels des Schlüsselwortes super an den Konstruktor Vierbeiner(String pName) der Oberklasse Vierbeiner, in dem der Name der Objektvariable vierbeinerName zugewiesen wird.
+
+Genauso müssen wir natürlich auch unsere Klasse Katze um einen entsprechenden Konstruktor erweitern.
+
+1: public Katze(String pKatzeName){
+2:    super(pKatzeName);
+3:}
+So jetzt müsste es funktionieren! Probieren wir es aus!! Schauen wir uns die Programmausgabe an.
+
+Bello rennt los!
+Wilhelm rennt los!
+Wuff!!
+Ich fange die Maus!
+Jippie, es funktioniert! Unser Hund heißt jetzt Bello und unsere Katze Wilhelm.
+
+Hier noch eine kleine Skizze wie der Name unseres Tieres durch die Klassenhierarchie geschleppt wird.
+
+Aufruf der Konsruktoren der Oberklassen mit dem Schlüsselwort super
+
+Substitutionsprinzip der objektorientierten Programmierung.
+
+Vielleicht hast du dir auch schon die Frage gestellt?
+
+Sowohl unser Hund als auch unsere Katze ist ein Vierbeiner. Was passiert also, wenn wir versuchen Wilhelm oder Bello in dem Datentyp Vierbeiner zu speichern?
+
+Probieren wir es aus!
+
+Katze wilhelm = new Katze("Wilhelm");
+Vierbeiner haustier = wilhelm;
+Hmm, okay das hat zumindest mal nicht geknallt und konnte problemlos kompiliert werden.
+
+Was passiert aber wenn wir die Methoden rennen() aus der Klasse Vierbeiner und maus_jagen() aus der Klasse Katze aufrufen?
+
+Die Variable haustier hat den Datentyp Vierbeiner. Der Aufruf
+
+<code>haustier.rennen()</code>
+sollte uns keinen Ärger machen, da sich rennen() in der Oberklasse Vierbeiner befindet. Und in der Tat rennt Wilhelm wie gewünscht los. Wir erhalten die Bildschirmausgabe:
+
+Wilhelm rennt los!
+Spannend wird es, wenn wir versuchen die Methode maus_jagen() aufzurufen. Diese gibt es nämlich nicht in der Klasse Vierbeiner sondern nur in der Klasse Katze. Deshalb führt der Aufruf der Methode maus_jagen() über die Vierbeiner-Instanz zu einem Kompilierungsfehler.
+
+Das liegt einfach daran, dass durch die Zuweisung
+
+Vierbeiner haustier = wilhelm;
+unser guter Wilhelm auf einen gewöhnlichen Vierbeiner reduziert wird und alle Eigenschaften, wie maus_jagen(), die aus einem Vierbeiner eine Katze machen verloren gehen.
+
+Aber es gibt einen Trick! Und zwar eine sogenannte Typumwandlung!
+
+Wir erzeugen eine Instanz von Katze, dessen Referenz wir in der Variable haustier speichern.
+
+Vierbeiner haustier = new Katze("wilhelm");
+Da haustier eine Instanz von Katze ist, können wir diese in den Datentyp Katze umwandeln. Hierfür schreiben wir den Typ, in den wir umwandeln wollen in Klammern vor die Variable die wir zuweisen möchten.
+
+Katze wilhelm = (Katze) haustier;
+Jetzt können wir auch die Objektmethode maus_jagen() aufrufen.
+
+wilhelm.rennen();
+wilhelm.maus_jagen();
+Und jetzt rate mal wie die Bildschirmausgabe aussieht?
+
+wilhelm rennt los!
+Ich fange die Maus!
+Wilhelm rennt los und fängt die Maus!
+
+Das Familienoberhaupt die Klasse Object
+
+Jeder hat Verwandte! Erst recht in Java. Wurzel im Stammbaum ist die Klasse Object. Auch wenn wir es nicht durch ein extends hervorheben, ist JEDE Klasse eine Unterklasse von Object.
+
+Als Konsequenz können wir Wilhelm in einer Variablen vom Datentyp Object speichern.
+
+Object wilhelm = new Katze("wilhelm");
+Die Klasse Object ist also die Universalklasse, die jedes Objekt aufnehmen kann. Natürlich wird  jedes Objekt auf die Funktionalität der Klasse Object reduziert.
+
+Unser Wilhelm kann also, gespeichert in einer Variablen vom Typ Object, weder eine maus_jagen() noch rennen().
+
+Das überschreiben von Methoden der Oberklasse
+
+Unsere Katze rennt doppelt so schnell wie unser Hund.
+
+Diesen Umstand sollten wir beachten indem wir der Klasse Katze eine eigene rennen() Methode hinzufügen.
+
+public void rennen(){
+   System.out.println("Ich bin eine Katze und laufe schneller als ein Hund!");
+}
+Kim! Aber jetzt hat Katze und die Oberklasse Vierbeiner eine gleichnamige Funktion rennen().
+
+So ist es! Und das bringt uns auf ein wichtiges Konzept in der objektorientierten Programmierung. Nämlich das Überschreiben von Funktionen, welches besagt:
+
+Gibt es in einer Klassenhierarchie Funktionen mit gleichem Namen und gleicher Parameterliste, dann wird die Funktion aus der untersten Klasse aufgerufen.
+
+Die Kombination aus Funktionsnamen und Parameterliste nennt der Experte Signatur.
+
+Merke:Der Rückgabewerte gehört NICHT zur Signatur und muss innerhalb der Klassenhierachie einheitlich sein. Einzigste Ausnahme sind Methoden, die Instanzen einer Klasse als Rückgabewert liefern. In diesem Fall sind auch sämtliche Unterklassen erlaubt. Das ist auch der Grund weshalb die Klasse Object als Rückgabewert einer Methode sehr attraktiv ist.
+
+Natürlich wären wir keine Codeadventurer, wenn wir das nicht gleich ausprobieren würden.
+
+1: Katze wilhelm = new Katze("Wilhelm");
+2: wilhelm.rennen();
+In der ersten Zeile erzeugen wir eine Instanz der Klasse Katze um in der nächsten Zeile die Methode rennen() aufzurufen.
+
+Und hier die eine millionen Euro Frage. Wie ist die Programmausgabe? Wird die Methode rennen() aus der Klasse Vierbeiner oder aus der Klasse Katze aufgerufen?
+
+Wenn ich dir keinen Mist erzählt habe, sollte die Methode aus der Klasse Katze aufgerufen werden.
+
+Ich bin eine Katze und laufe schneller als ein Hund!
+Puh, Glück gehabt! Die erhaltene Bildschirmausgabe wird in der rennen() Methode der Klasse Katze geworfen.
+
+Aufruf der überschriebenen Methode der Oberklasse
+
+So wie wir es gemacht haben, haben wir die Methode rennen() aus der Oberklasse Vierbeiner vollständig abgelöst.
+
+Großer Vorteil der Vererbung in der objektorientierten Programmierung ist aber die Spezifizierung von der Oberklasse (z.B. Vierbeiner) bis hin zur letzten Unterklasse (z.B. Katze) in der Objekthierarchie.
+
+Das gilt auch für die Methoden in den Klassen. Oft wollen wir die Methode einer Oberklasse garnicht vollständig ablösen, sondern lediglich spezifischer gestalten.
+
+Und hier betritt das Schlüsselwort super, das wir bereits im Zusammenhang mit den Konstruktoren kennengelernt haben erneut die Bühne.
+
+Durch dieses haben wir dir Möglichkeit die überschriebene Methode aus der Oberklasse aufzurufen. Schließlich wäre auch in unserem Beispiel die Information darüber, auf welchen Namen unsere rennende Katze hört eine feine Sache.
+
+Und genau das wird in der Methode rennen() aus der Oberklasse Vierbeiner ausgegeben.
+
+Wir müssen also aus der rennen() Methode der Unterklasse Katze die rennen() Methode der Oberklasse Vierbeiner aufrufen. Also Bühne frei für Herrn super.
+
+Zunächst die Erweiterung der Katzen-Methode:
+
+1: public void rennen(){
+2:    super.rennen();
+3:    System.out.println("Ich bin eine Katze und laufe schneller als ein Hund!");
+4:}
+Easy, wir haben einfach in der zweiten Zeile das Schlüsselwort super genutzt um die Methode rennen() der Oberklasse aufzurufen.
+
+Die allgmeine Syntax bei super lautet:
+
+ super."Name der Methode aus der Oberklasse"
+So weit so gut! Machen wir einen Testlauf.
+
+1: Katze wilhelm = new Katze("Wilhelm");
+2: wilhelm.rennen();
+Das ist das selbe prozedre wie oben. In der ersten Zeile erzeugen wir die Instanz einer Katze und rufen anschließend hierüber die Methode rennen() auf.
+
+Dieses mal sollte aber auch die Methode aus der Oberklasse aufgerufen werden. Werfen wir also einen Blick auf die Programmausgabe und checken, ob es geklappt hat.
+
+Wilhelm rennt los!
+Ich bin eine Katze und laufe schneller als ein Hund!
+Das sieht doch gut aus!
+
+In der ersten Zeile steht die Programmausgabe, welche die Methode rennen() aus der Klasse Vierbeiner erzeugt. Die zweite Ausgabe ist Katzen spezifisch und wird von der Methode rennen() aus der Klasse Katze ausgegeben.
+
+Im folgenden Video zeige ich dir wie du die einzelnen Schritte in Eclipse nachvollziehen kannst.
+
+
+
+Klassen in Paketen organisieren.
+
+In unserem Beispiel haben wir es bereits auf drei Klassen gebracht. Aber das ist garnix! Allein die Standardbibliothek umfasst viele tausend Klassen.
+
+Um hier den Überblick nicht zu verlieren, können Klassen thematisch in Paketen organisiert werden. Für unser Beispiel könnten wir z.B. ein Paket tierMitVierbeinen schnüren.
+
+Merke: Es ist gängige Notation, dass der Name eines Paketes mit einem Kleinbuchstaben beginnt.
+
+Ein Päkchen packen wir mit Hilfe des Schlüsselwortes package.
+
+In jede Datei, die eine Klasse unseres Pakets enthält schreiben wir gleich in die erste Zeile.
+
+package tierMitVierbeinen;
+Machen wir das mit allen Dateien, die unsere Klassen Vierbeiner, Hund und Katze enthalten, haben wir ein Paket mit dem Namen tierMitVierBeinen gepackt.
+
+Pakete in ein JAVA-Programm einbinden
+
+Um Klassen eines Pakets nutzen zu können, musst du diese nur noch mit Hilfe des Schlüsselwortes import in deine Programme einbinden.
+
+import tierMitVierBeinen.Vierbeiner;
+import tierMitVierBeinen.Katze;
+import tierMitVierBeinen.Hund;
+Kim, das ist aber ganz schön aufwendig! Geht das nicht irgendwie einfacher?
+
+Ja, aber natürlich! Es gibt das Wildcard-Zeichen *. Hiermit können wir alle im Paket tierMitVierbeinen enthaltene Klassen in einem Rutsch einbinden. Und das geht haargenau so:
+
+import tierMitVierBeinen.*;
+Dank des Import-Befehls kannst du alle Klassen aus dem Paket tierMitVierBeinen verwenden.
+
+objektorientierte_programmierung_sichtbarkeiten
+
+Die Sichtbarkeiten private, protected und public.
+
+Waas dir gefällt der Name unserer Katze nicht!?
+
+Tja, dann haben wir jetzt ein Problem.
+
+Warum? Naja, wir haben die Variable vierbeinerName, in der wir den Tiernamen speichern, als private deklariert und ist deshalb nur in der Klasse Vierbeiner bekannt.
+
+Der einzigste Zugriff hierdrauf findet über den Konstruktor Vierbeiner(String pName) statt. Ist eine Instanz also erst einmal angelegt, haben wir keine Möglichkeit unseren Vierbeiner umzutaufen.
+
+Was können wir tun?
+
+Du hast bereits gelernt was eine setter Methode ist. Eine Idee wäre es unsere Klasse Vierbeiner um eine setter Methode zu erweitern. Das ist ein wichtiges Konzept, das für dich täglich Brot werden muss, wenn du ein Programmierer werden willst.
+
+Deshalb wollen wir es an dieser Stelle kurz wiederholen und besonderes Augenmerk auf die Sichtbarkeiten private und public legen.
+
+Hier zunächst die setter Methode.
+
+public void setName(String pName){
+    vierbeinerName = pName;
+}
+Jetzt können wir einfach die setter-Objektmethode setName mit gewünschtem Namen als Argument aufrufen.
+
+Probelauf gefälligst?
+
+ 1:  Katze meineKatze = new Katze("Wilhelm");
+ 2:  meineKatze.rennen();
+ 3:  meineKatze.setName("Friedrich");
+ 4:  meineKatze.rennen();
+Wir erzeugen in der ersten Zeile zunächst ein Katzen-Objekt, das wir Wilhelm nennen und in der zweiten Zeile zum rennen bringen.
+
+Anschließend rufen wir über die Instanz meineKatze die setter-Methode setName der Klasse Vierbeiner mit dem Argument Friedrich auf. Hierdurch wird das Attribut vierbeinerName auf den Wert Friedrich gesetzt und wir haben Wilhelm in Friedrich umgetauft.
+
+Um dir zu beweisen, dass es auch wirklich funktioniert hat, lassen wir in Zeile vier auch Friedrich noch ein bißchen herumrennen. Hier dir Bildschirmausgabe:
+
+Wilhelm rennt los!
+Friedrich rennt los!
+Fazit: Entscheidend ist, dass wir die setter Methode setName als public deklariert haben. Hierdurch ist es möglich von außerhalb auf setName zuzugreifen, und weil diese zu der Klasse Vierbeiner gehört, kannst du hieraus die private Variable vierbeinerName verändern.
+
+Neben den Sichtbarkeiten private und public gibt es noch die Möglichkeit Variablen und Methoden als protected zu deklarieren.
+
+Die Sichtbarkeit protected.
+
+Ist eine Objektvariable oder eine Methode innnerhalb einer Klasse als protected daklariert, dann ist diese nur in der Klasse selbst und in den zugehörigen Unterklassen sichtbar. Ausnahme bilden hier allerdings Klassen, die im selben Paket liegen.
+
+Kim, wo ist denn dann der Unterschied zwischen public und protected , wenn Klassen innerhalb des selben Pakets liegen?
+
+Kurz und schmerzlos. Die Antwort ist: In diesem Fall gibt es KEINEN Unterschied!
+
+Gut, wofür können wir die Sichtbarkeit protected in unserem Beispiel gebrauchen?
+
+Stell dir ein Krabbeltier vor. Meinetwegen einen Tausendfüßler. Sicherlich kann dieser nicht so schnell rennen wie ein Hund oder eine Katze. Dennoch könnte ein Tausendfüßler ohne Schwierigkeiten die Methode rennen() aus der Klasse Vierbeiner aufrufen.
+
+Hier der Beweis: Wir erstellen eine Klasse Tausendfuesssler.
+
+1: import tierMitVierbeinen.Vierbeiner;
+
+2: public class Tausendfuessler{
+
+3:	public Tausendfuessler(){
+4:		Vierbeiner willie = new Vierbeiner("Willie");
+5:		willie.rennen();
+6:	}
+
+7:}
+Innerhalb der Klasse Tausendfuessler möchten wir eine Instanz der Klasse Vierbeiner erzeugen, die zum Paket tierMitVierbeinen gehört. Deshalb müssen wir in Zeile eins dieses Paket zunächst über den import Befehl in unser Programm einbinden.
+
+Die Klasse selbst enthält nur den Standardkonstruktor, der ein Vierbeiner Objekt willie erzeugt und zum rennen bringt.
+
+Aber mal ehrlich! Hast du schonmal einen Tausendfüssler rennen sehen? Also ich nicht! Deshalb sollten wir die Methode rennen() nach Möglichkeit vor Zugriffen aus der Klasse Tausendfuessler schützen.
+
+Da Tausendfüssler sich nicht im Paket tierMitVierbeinen befindet und auch nicht von der Klasse Vierbeiner erbt. Eignet sich hierfür die Sichtbarkeit protected so gut wie eine Mütze im Winter.
+
+Wir verändern die Sichtbarkeit der Methode rennen() also von public in protected.
+
+protected void rennen(){
+    System.out.println(vierbeinerName+" rennt los!");
+}
+Wenn du jetzt dein Programm startest, erhälst du eine Fehlermeldung, dass die Methode rennen() nicht sichtbar ist. Genau wie wir es wollten!
+
+Kim, aber was ist mit unseren Hunden und Katzen?
+
+Kein Problem! Da die Klassen Hund und Katze Unterklassen von Viebeiner sind, kann aus diesen problemlos auf protected Elemente von Vierbeiner zugegriffen werden. Unser Hund und unsere Katze kann also auch weiterhin nach Herzenslust in der Gegend herumrennen.
+
+So das war wieder ein harter Brocken. Aber Vererbung ist im Rahmen der objektorientierten Programmierung ein sehr wichtiges Konzept, da es die Wiederverwendung von bereits vorhandenen Klassen auch dann ermöglicht, wenn diese nur im „groben“ tun was du willst.
+
+Mit Hilfe der objektorientierten Vererbung kannst du vorhandene Klassen so spezifizieren, dass du sie für Lösung deines Programmier-Problems verwenden kannst.
+
+Im nächsten Teil dieser Artikelserie über objektorientierte Programmierung lernst du einen speziellen Typ einer Klasse kennen. Und zwar die abstrakte Klasse. Von einer abstrakten Klasse können keine Objekte erzeugt werden und sind daher nur zum Vererben an Unterklassen da.
+
+Wie immer freue ich mich über deine Fragen im Kommentarbereich.
+
+Hat dir der Artikel gefallen? Dann folge uns doch am besten auf Facebook.
+
+Hallo ich bin Kim und ich möchte ein großer Programmierer werden. Machst du mit?
