@@ -6,7 +6,7 @@ class Katze extends Vierbeiner {
     }
 
     public void miauen() {
-        System.out.println("M________________________iau");
+        System.out.println("Miau_Miau sagt die Katze");
     }
 
     public void rennen() {
