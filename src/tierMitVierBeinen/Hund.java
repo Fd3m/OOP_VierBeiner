@@ -6,11 +6,11 @@ class Hund extends Vierbeiner {
     }
 
     public void bellen() {
-        System.out.println("WUFF!");
+        System.out.println("WAuWAuuu!");
     }
     public void rennen() {
         super.rennen();
-        System.out.println("  Hunde laufen langsam los");
+        System.out.println(" läuft langsam los");
     }
 
 }
