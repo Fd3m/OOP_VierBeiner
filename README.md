@@ -4,7 +4,7 @@ https://www.codeadventurer.de/?p=1375
 ## Objektorientierte Programmierung am Beispiel von JAVA – Wie du dir mit Hilfe von Vererbung eine Menge Programmierarbeit ersparst.
 
 ## Zusammenfassen:
-Vererbung in der objektorientierten Programmierung ermöglicht es, Klassen Eigenschaften und Methoden von einer Oberklasse zu erben.
+Vererbung in der **objektorientierten Programmierung** ermöglicht es, Klassen Eigenschaften und Methoden von einer Oberklasse zu erben.
 Dies spart Programmierarbeit, indem gemeinsamer Code wiederverwendet wird. Das Schlüsselwort “extends” wird verwendet, um die Vererbung
 festzulegen, und “super” wird genutzt, um den Konstruktor der Oberklasse aufzurufen.
 Keylearnings:
