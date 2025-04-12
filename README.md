@@ -7,7 +7,7 @@ https://www.codeadventurer.de/?p=1375
 Vererbung in der **objektorientierten Programmierung** ermöglicht es, Klassen Eigenschaften und Methoden von einer Oberklasse zu erben.
 Dies spart Programmierarbeit, indem gemeinsamer Code wiederverwendet wird. Das Schlüsselwort “extends” wird verwendet, um die Vererbung
 festzulegen, und “super” wird genutzt, um den Konstruktor der Oberklasse aufzurufen.
-Keylearnings:
+## Keylearnings:
 Was ist Vererbung in der objektorientierten Programmierung?
 Wie man die Sichtbarkeit von Klassen-Elementen über die Schlüsselwörter public, protected und private steuert.
 Wie man Klassen mit Hilfe von Paketen organisiert.
